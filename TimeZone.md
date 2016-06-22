@@ -55,4 +55,7 @@ Here begins our implementation: we define a method 'getDefaultTimezone()'. The a
     return res;
    }
 } // end of class
+
 ```
+
+Next we try a module-only module that is a little more complicate. The module access the internet, retrieves a XML or HTML file and parse it with xsoup. It is named [Ti.Scrape](TiScrape.md)
