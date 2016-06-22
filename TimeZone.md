@@ -10,6 +10,8 @@ This is the package name and is related to path in filesystem under 'src'. A pac
 package ti.timezone;
 ```
 
+Now we import all required classes. We see some stuff from appcelerator and from java (system). If we see yellow warning on left side of screen with warning like "cannot resolve symbol xyz" we can press CtrlApple-O to solve it.
+
 
 ```java
 import org.appcelerator.kroll.KrollModule;
