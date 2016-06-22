@@ -20,6 +20,7 @@ For using the xpath functionality we copy the source tree:
 
 as sibling to our package tree. Now we can dive into code. Lets open ScraperModule.java.
 
+First in the header we import all required stuff, first the appc stuff, the java and android stuff and in the and we import both thirtdparty libraries:
 
 ```java
 package de.appwerft.scraper;
@@ -30,9 +31,6 @@ import org.appcelerator.kroll.common.Log;
 import org.appcelerator.titanium.TiApplication;
 
 import java.io.IOException;
-
-import android.os.AsyncTask;
-
 import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +38,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import android.os.AsyncTask;
+
 import org.jsoup.nodes.Document;
 import org.jsoup.Jsoup;
 import us.codecraft.xsoup.*;
+```
 
+
+
+```java
 @Kroll.module(name = "Scraper", id = "de.appwerft.scraper")
 public class ScraperModule extends KrollModule {
 	// Standard Debugging variables
