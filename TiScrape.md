@@ -6,7 +6,8 @@ In last module [Ti.TimeZone](TimeZone.md) we used only system functions. In this
 We have two possibilities: we import a compiled jar file (it is a zip and contains class files) or we import the sources. In our little demo we use both ways. 
 
 
-First we use jsoup as jar. For this we right click on project, goes to properties and select BuildPath:
+First we use jsoup as jar. For this we right click on project, goes to properties and select Java BuildPath:
+
 ![](https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d2.jpg)
 
 With "Add external jar" we select the jar from filesystem. Commonly we have copied it into lib.
