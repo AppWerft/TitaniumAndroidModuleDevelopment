@@ -16,4 +16,8 @@ If we only find a aar, the we can convert this into jar by simple unzip, rename 
 
 For using the xpath functionality we copy the source tree:
 
-![](https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d3.jpg) as sibling to our package tree
+![](https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d3.jpg) 
+
+as sibling to our package tree. Now we can dive into code. Lets open ScaperModule.java.
+
+
