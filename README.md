@@ -25,5 +25,8 @@ In the end you must change the account name ;-)
 Creation of module boilerplate
 ------------------------------
 
+For this we can use wizard of Studio. Nerds know how with CLI.
+
+![](https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d1.jpg)
 
 
