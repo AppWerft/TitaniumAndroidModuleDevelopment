@@ -21,23 +21,27 @@ import org.appcelerator.kroll.KrollDict;
 import java.util.TimeZone;
 ```
 
+This part will built by wizard. This class (our class) inherites from [KrollModule](http://builds.appcelerator.com.s3.amazonaws.com/javadoc/org/appcelerator/kroll/KrollModule.html) 
 ```java
 @Kroll.module(name = "Titimezone", id = "ti.timezone")
 public class TitimezoneModule extends KrollModule {
 ```
 
+This is constructor (same name as class, without parameters)
 ```java
 public TitimezoneModule() {
 super();
 }
 ```
 
+This is part of lifecycle stuff (unsused)
 ```java
 @Kroll.onAppCreate
 public static void onAppCreate(TiApplication app) {
 }
 ```
 
+Here begins our implementation: we define a method 'getDefaultTimezone()'. The annotation 'getProperty' is the binding to javascript layer. Return value is KrollDict. This is a special kind of HashMap and is for communiaction with javascript. First we retrieve from TimeZone class with 'getDefault()' a TimeZone object. Next we create a new empty KrollDict. And with put() we put some stuff into. In the end we return the result. Its all! 
 
 ```java
   @Kroll.getProperty
