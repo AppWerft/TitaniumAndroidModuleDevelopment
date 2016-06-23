@@ -87,7 +87,21 @@ With this pattern we have access to app properties:
 
 		Log.d(LCAT, "clientIdSandbox after reading of properties="
 				+ clientIdSandbox);
+```
+We have arguments and they are not null:
+```java
+
 		if (args != null && args instanceof KrollDict) {
+```
+Now we test all keys. With Ti.Convert.to* we convert from untyped Js to java. Remark: in Js we should write
+
+```javascript
+this.clientIdSandbox
+```
+
+On Java the compiler knows it.
+```java
+
 			if (args.containsKeyAndNotNull("clientIdSandbox")) {
 				clientIdSandbox = TiConvert.toString(args
 						.get("clientIdSandbox"));
@@ -112,6 +126,10 @@ With this pattern we have access to app properties:
 		Log.d(LCAT, "clientId=" + clientId);
 	}
 
+```
+In iOS module we can create a configuration object, we can add it to the later call, but for compatibility we have this dummy function:
+```java
+
 	@Kroll.method
 	public KrollDict createConfiguration(KrollDict args) {
 		return args;
@@ -127,6 +145,9 @@ With this pattern we have access to app properties:
 	public void setDebuglevel(int level) {
 		debugLevel = level;
 	}
+```
+This method is a helper to expose all available currencies on system:
+```java
 
 	@Kroll.method
 	public ArrayList<KrollDict> getAllCurrencySigns() {
@@ -149,3 +170,6 @@ With this pattern we have access to app properties:
 }
 
 ```
+
+
+
