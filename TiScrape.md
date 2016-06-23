@@ -108,14 +108,15 @@ First we set the parameters to default values:
 				Map<String, String> filterList = new HashMap<String, String>();
 				/* reading of proxy properties: */
 ```
+The next part is part of every module: we have to import the options from Javascript layer. Javascript is untyped language and Kroll provide us a lot of [helper functions](http://builds.appcelerator.com.s3.amazonaws.com/javadoc/org/appcelerator/kroll/KrollDict.html). The pattern is *containsKeyAndNotNull* and *getTYPE(KEY)* For some paramters like *with*, *backgroundColor* etc we have macros and it is a good idea to use it. 
 ```java
-				if (options.containsKey("timeout")) {
+				if (options.containsKeyAndNotNull("timeout")) {
 					timeout = options.getInt("timeout");
 				}
-				if (options.containsKey("url")) {
+				if (options.containsKeyAndNotNull("url")) {
 					url = options.getString("url");
 				}
-				if (options.containsKey("useragent")) {
+				if (options.containsKeyAndNotNull("useragent")) {
 					useragent = options.getString("useragent");
 				}
 				if (options.containsKey("rootXpath")) {
