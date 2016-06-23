@@ -200,6 +200,10 @@ The logic above generates a HashMap of ArrayLists. On JS layer we aspect an arra
 				return resultList;
 			}
 		};
+```
+Executimg of async task:
+```java
+		
 		doRequest.execute();
 	}
 }
