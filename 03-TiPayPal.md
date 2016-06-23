@@ -236,12 +236,12 @@ public class PaymentProxy extends KrollProxy implements OnActivityResultEvent {
 	public PaymentProxy() {
 		super();
 	}
-
+```
+Here we implement the code for result callback. The arguments are self explaining. The code is from example PayPal implementation. Depending of resultcode and payservice different events will fire to the caller object. 
+```java
 	@Override
 	public void onActivityResult(Activity act, int REQUEST_CODE, int resCode,
 			Intent data) {
-		// error: method does not override or implement a method from a
-		// supertype
 		if (REQUEST_CODE == REQUEST_CODE_PAYMENT) {
 			if (resCode == Activity.RESULT_OK) {
 				PaymentConfirmation confirm = data
@@ -337,12 +337,20 @@ public class PaymentProxy extends KrollProxy implements OnActivityResultEvent {
 
 	}
 
-	/*
-	 * this method (called by JS level) opens the billing layer
-	 */
+```
+OK, this was the second step as first. Now we implement the billing layer. All public methods with the annotation *@Kroll.method* will exposed to javascript.
+```java
 	@Kroll.method
 	public void show() {
+```
+In every cases if the origianl android code needs a context or this, we have to call this boilerplate the get the context:
+```java
+	
 		Context context = TiApplication.getInstance().getApplicationContext();
+```
+An intent is a component for communication between components like activiteis or services. In this case for calling the billing activity.
+```java
+
 		Intent intent = new Intent(context, PaymentActivity.class);
 		if (futurePayment == false) {
 			PayPalPayment thingsToBuy = null;
