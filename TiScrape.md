@@ -83,6 +83,7 @@ For sending the result we use a callback and for this we need a KrollFunction as
 	}
 ```
 
+The module has only one method named *createScraper*. This method has two parameters: first an object (dictionairy) with parameters like url and xpath strings and the seconde parameter is the (optional) callback. If a paramter is optional we need this special annotation *@Kroll.argument(optional = true)*. The main part of createScraper is an [async task](http://www.compiletimeerror.com/2013/01/why-and-how-to-use-asynctask.html). The constructor has three parameters. All keeps empty, because we realize the communcation in other way. 
 
 ```java
 	@Kroll.method
@@ -90,14 +91,24 @@ For sending the result we use a callback and for this we need a KrollFunction as
 			final @Kroll.argument(optional = true) KrollFunction mCallback) {
 		AsyncTask<Void, Void, Void> doRequest = new AsyncTask<Void, Void, Void>() {
 			@SuppressWarnings({ "unchecked", "rawtypes" })
+			
+```
+In our case we only implement the method *doInBackground*.
+```java
 			@Override
 			protected Void doInBackground(Void[] arg0) {
+```
+First we set the parameters to default values:
+```java
+			
 				int timeout = 10000;
 				String url = null;
 				String useragent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:46.0) Gecko/20100101 Firefox/46.0";
 				String rootXpath = null;
 				Map<String, String> filterList = new HashMap<String, String>();
 				/* reading of proxy properties: */
+```
+```java
 				if (options.containsKey("timeout")) {
 					timeout = options.getInt("timeout");
 				}
