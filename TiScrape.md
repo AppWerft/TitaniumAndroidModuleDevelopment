@@ -17,11 +17,17 @@ A moderne form of jar is aar. An aar is a jar plus resources. If we only find a 
 2.    Find the classes.jar file in the extracted files
 3.    Rename it to your liking and use the wanted jar file in your project
 
-For using the xpath functionality we copy the source tree:
+The second way is to use the original sources. Good for code review, but in every compile in ant all the stuff will touches. 
+
+First we look for the [sources on github](https://github.com/code4craft/xsoup). In folder *src* we find 2 trees. We take *main/java/us/codecraft/xsoup*. For this we go back to parent node and downlaod zip. After downloading we open the zip, go to src and copy the *main/java/us/codecraft/xsoup* to our src tree:
 
 ![](https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d3.jpg) 
 
-as sibling to our package tree. Now we can dive into code. Lets open ScraperModule.java.
+as sibling to our package tree. 
+
+
+
+Now we can dive into code. Lets open ScraperModule.java.
 
 First in the header we import all required stuff, first the appc stuff, the java and android stuff and in the and we import both thirtdparty libraries:
 
