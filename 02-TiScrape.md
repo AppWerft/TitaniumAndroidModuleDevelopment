@@ -212,5 +212,5 @@ Executimg of async task:
 }
 
 ```
->>>>>>> a710c01035f54ee8a5e2a8e177bd5c43d3cc96a1
+In the [next module (PayPal)](02-TiPayPal.md) we learn to handle proxies. 
 

@@ -45,7 +45,7 @@ var myModule = require('com.domain.myfirst');
 This module followes the singleton pattern. If we require the module more then once, the content of properties is the same. We don't generate instances. 
 
 The seconde file 'AbcxyzProxy.java' we only need if we need an instance or a return value that is more as a simple object. I.e. a view etc.
-
-We begin with a simple module that only expose a simple API like [TimeZone](TimeZone.md). In this case you can remove the proxy. 
+01-
+We begin with a simple module that only expose a simple API like [TimeZone](01-TimeZone.md). In this case you can remove the proxy. 
 
 
