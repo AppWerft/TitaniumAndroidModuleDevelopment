@@ -9,9 +9,13 @@ First we use [jsoup](https://jsoup.org/download) as jar file. For this we right 
 
 ![](https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d2.jpg)
 
-With "Add external jar" we select the jar from filesystem. Commonly we have copied it into lib.
+First we download the file *jsoup-1.9.2.jar* to our lib folder. This is the standard folder for this. With *Add external Jar* we select the jar from filesystem. 
 
-If we only find a aar, the we can convert this into jar by simple unzip, rename the jar to the our name (in most cases the same name as the aar.)
+A moderne form of jar is aar. An aar is a jar plus resources. If we only find a aar in net , the we can convert this aar into jar in three steps:
+
+1.    Extract the AAR file using standard zip extract
+2.    Find the classes.jar file in the extracted files
+3.    Rename it to your liking and use the wanted jar file in your project
 
 For using the xpath functionality we copy the source tree:
 
