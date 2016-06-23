@@ -113,8 +113,8 @@ The next part is part of every module: we have to import the options from Javasc
 				if (options.containsKeyAndNotNull("timeout")) {
 					timeout = options.getInt("timeout");
 				}
-				if (options.containsKeyAndNotNull("url")) {
-					url = options.getString("url");
+				if (options.containsKeyAndNotNull(KEY_URL)) {
+					url = options.getString(KEY_URL);
 				}
 				if (options.containsKeyAndNotNull("useragent")) {
 					useragent = options.getString("useragent");
@@ -125,7 +125,13 @@ The next part is part of every module: we have to import the options from Javasc
 				if (options.containsKey("subXpaths")) {
 					filterList = (Map) options.getKrollDict("subXpaths");
 				}
-				KrollDict data = new KrollDict();
+```
+Now we have imported all stuff. If the paramter object is not plain (like in this project) and has more the one level, you can use this patterns recursivly. In this case you can use *getKrollDict(NAME_OF_PROPERTY)* Please look to import of region in ti.map. As second parameter of get*() you use a default value.
+
+
+Jsoup has an own httpclient implemetation, we us it. The result is a Document and now we can use the xsoup library to parse. paramter from JS layer is an object. Keys are only keys form communiaction and the values are xpath's.  
+```java
+				KrollDict data = new KrollDict(); // collector for result
 				try {
 					Document rootDoc = null;
 					Document pageDoc = Jsoup.connect(url).userAgent(useragent)
