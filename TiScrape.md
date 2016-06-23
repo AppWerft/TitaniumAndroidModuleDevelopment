@@ -25,11 +25,16 @@ First we look for the [sources on github](https://github.com/code4craft/xsoup). 
 
 as sibling to our package tree. 
 
+An alternative is to build a jar file feom sources. For this we need two steps:
 
+1. checkout the repo with git
+2. starting maven to build the project
+
+Details you can find in [Maven howto](http://maven.apache.org/plugins/maven-source-plugin/usage.html)
 
 Now we can dive into code. Lets open ScraperModule.java.
 
-First in the header we import all required stuff, first the appc stuff, the java and android stuff and in the and we import both thirtdparty libraries:
+First in the header we import all required stuff, first the appc stuff, the java and android stuff and in the and we import both thirtparty libraries:
 
 ```java
 package de.appwerft.scraper;
