@@ -32,7 +32,7 @@ An alternative is to build a jar file feom sources. For this we need two steps:
 
 Details you can find in [Maven howto](http://maven.apache.org/plugins/maven-source-plugin/usage.html)
 
-Now we can dive into code. Lets open ScraperModule.java.
+Now we can dive into code. Lets open ScraperModule.java. The ScraperProxy.java I have deleted. WE dont need a proxy and intances, because teh main work is done in an async task and we have a strong binding in callback. With other workds, we have no return value.
 
 First in the header we import all required stuff, first the appc stuff, the java and android stuff and in the and we import both thirtparty libraries:
 
@@ -59,13 +59,18 @@ import org.jsoup.Jsoup;
 import us.codecraft.xsoup.*;
 ```
 
-
+Next comes the standard stuf from wizard:
 
 ```java
 @Kroll.module(name = "Scraper", id = "de.appwerft.scraper")
 public class ScraperModule extends KrollModule {
 	// Standard Debugging variables
 	private static final String LCAT = "HTMLScraper";
+```
+
+For sending the result we use a callback and for this we need a KrollFunction as class variable. The other way could be the usage of a *fireEvent*. It is simpler to implement, but if we start more the one scraper we would not have a reference to source of event and would test a parameter in payload. It seems more complicate.
+
+```java
 	public KrollFunction mCallback;
 
 	public ScraperModule() {
@@ -76,7 +81,10 @@ public class ScraperModule extends KrollModule {
 	public static void onAppCreate(TiApplication app) {
 		Log.d(LCAT, "inside onAppCreate");
 	}
+```
 
+
+```java
 	@Kroll.method
 	public void createScraper(final KrollDict options,
 			final @Kroll.argument(optional = true) KrollFunction mCallback) {
