@@ -31,13 +31,19 @@ import com.paypal.android.sdk.payments.PayPalConfiguration;
 @Kroll.module(name = "Paypal", id = "de.appwerft.paypal")
 public class PaypalModule extends KrollModule {
 	private static final String LCAT = "PaypalModule";
-	public int debugLevel;
-	public String clientIdSandbox;
-	public String clientIdProduction;
-	public static String clientId;
-	public static int environment;
-	public static String CONFIG_ENVIRONMENT;
+```
+Here we crete some vars for handling inside module:
+```java
 
+	private int debugLevel;
+	private String clientIdSandbox;
+	pivate String clientIdProduction;
+	private static String clientId;
+	private static int environment;
+	rivate static String CONFIG_ENVIRONMENT;
+```
+With this annotation we can declare constants. These constants are exposed to javascript layer. Now you can use it as parameter in methodes.
+```java
 	@Kroll.constant
 	public static final int ENVIRONMENT_SANDBOX = 0;
 	@Kroll.constant
@@ -48,15 +54,23 @@ public class PaypalModule extends KrollModule {
 	public static final int PAYMENT_INTENT_AUTHORIZE = 1;
 	@Kroll.constant
 	public static final int PAYMENT_INTENT_ORDER = 2;
+```
+The user of the module can  predefine keys in tiapp.xml. For this we need an instance of TiProperties.
+```java
 
 	private TiProperties appProperties;
 
 	public PaypalModule() {
 		super();
 	}
-
+```
+First we need a method *initialize()* for importing paramters from function arguments and from tiapp.xml
+```java
 	@Kroll.method
 	public void initialize(@Kroll.argument(optional = true) KrollDict args) {
+```
+With this pattern we have access to app properties:
+```java
 		appProperties = TiApplication.getInstance().getAppProperties();
 		String environmentString = appProperties.getString(
 				"PAYPAL_ENVIRONMENT", "SANDBOX");
