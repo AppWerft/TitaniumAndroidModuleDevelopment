@@ -3,6 +3,8 @@ Ti.PayPal
 
 For this module we need a reference (PayPalPayment) of not simple object. For this we begin to dive in proxy world.
 
+Afosedter creating of module we copy the jar *PayPalAndroidSDK-2.14.2.jar* into lib. During implementation we will find that this closed source libary uses two other libraries. After downloading and copying iunto libs we have to add these three jars to Build Path as explained in older lectures.
+
 First we look into the module:
 
 ```java
