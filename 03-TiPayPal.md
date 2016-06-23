@@ -348,7 +348,7 @@ In every cases if the origianl android code needs a context or this, we have to 
 	
 		Context context = TiApplication.getInstance().getApplicationContext();
 ```
-An intent is a component for communication between components like activiteis or services. In this case for calling the billing activity.
+An intent is a component for communication between components like activiteis or services. In this case for calling the billing activity. This is all stuff from PayPal, depending of switch futurePay we send different.
 ```java
 
 		Intent intent = new Intent(context, PaymentActivity.class);
@@ -378,7 +378,9 @@ An intent is a component for communication between components like activiteis or
 		}
 
 	}
-
+```
+Here begins the import work. All arguments must convert.
+```java
 	@SuppressWarnings("unchecked")
 	@Override
 	public void handleCreationDict(KrollDict options) {
@@ -408,6 +410,10 @@ An intent is a component for communication between components like activiteis or
 			this.shipping = new BigDecimal(TiConvert.toString(options
 					.get("shipping")));
 		}
+```
+*Items*  is a list of payments. In this case with *options.get()* the array arguments from javascript layer will genericly imported. Oafter this we test if it is an object (=array). 
+```java
+		
 		if (options.containsKeyAndNotNull("items")) {
 			List<KrollDict> paymentItems = new ArrayList<KrollDict>();
 			this.paymentItems = (ArrayList<KrollDict>) options.get("items");
@@ -418,6 +424,10 @@ An intent is a component for communication between components like activiteis or
 			}
 
 		}
+```
+*configuration* is an object. For this we use **getKrollDict()
+```java
+		
 		if (options.containsKeyAndNotNull("configuration")) {
 			KrollDict configurationDict = options.getKrollDict("configuration");
 			if (!(configurationDict instanceof KrollDict)) {
@@ -430,6 +440,10 @@ An intent is a component for communication between components like activiteis or
 				ppConfiguration.merchantName(configurationDict
 						.getString("merchantName"));
 			}
+```
+Now we analyze the *configuration*, the format of URI will tested:
+```java
+			
 			if (configurationDict
 					.containsKeyAndNotNull("merchantPrivacyPolicyURL")) {
 				try {
@@ -449,6 +463,9 @@ An intent is a component for communication between components like activiteis or
 			Log.d(LCAT, ppConfiguration.toString());
 		}
 	}
+```
+This private helper function collect all stuff from list and calculate prize.
+```java
 
 	private PayPalPayment getStuffToBuy(String paymentIntent) {
 		if (paymentItems == null) {
@@ -493,6 +510,9 @@ An intent is a component for communication between components like activiteis or
 		payment.custom("This is text that will be associated with the payment that the app can use.");
 		return payment;
 	}
+```
+	This is a callback after successfull payment. 
+```java
 
 	private void sendAuthorizationToServer(PayPalAuthorization authorization) {
 	}
