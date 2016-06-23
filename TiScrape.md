@@ -1,12 +1,11 @@
 Ti.Scrape
 =========
 
-In last module [Ti.TimeZone](TimeZone.md) we used only system functions. In this module we try to use third-party libs. This is a big step and very useful ;-)
+In last module [Ti.TimeZone](TimeZone.md) we used only system functions. In this module we try to use *third-party libs* and *background tasks*. This is a big step and very useful ;-)
 
-We have two possibilities: we import a compiled jar file (it is a zip and contains class files) or we import the sources. In our little demo we use both ways. 
+For usage of third-party libraries have two possibilities: we import a compiled jar file (it is a zip file and contains class file tree ) or we import the sources. In our little demo we use both ways. 
 
-
-First we use jsoup as jar. For this we right click on project, goes to properties and select Java BuildPath:
+First we use [jsoup](https://jsoup.org/download) as jar file. For this we right click on project, go to properties and select *Java BuildPath*:
 
 ![](https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d2.jpg)
 
