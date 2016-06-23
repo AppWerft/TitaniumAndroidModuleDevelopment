@@ -147,6 +147,11 @@ Jsoup has an own httpclient implemetation, we us it. The result is a Document an
 					data.put("items", resultList.toArray());
 					data.put("count", resultList.size());
 					data.put("success", true);
+```
+
+Now in *data* all results. With the next line we call the callback.
+
+```java
 					mCallback.call(getKrollObject(), data);
 				} catch (MalformedURLException e) {
 					data.put("error", "MalformedURLException");
@@ -159,7 +164,10 @@ Jsoup has an own httpclient implemetation, we us it. The result is a Document an
 				}
 				return null;
 			}
+```
+The logic above generates a HashMap of ArrayLists. On JS layer we aspect an array of object. For this conversion we need this private method:
 
+```java
 			private List<HashMap<String, String>> getMatchesByFilter(
 					Document rootDoc, Map<String, String> filterList) {
 				List<HashMap<String, String>> resultList = new ArrayList<HashMap<String, String>>();
