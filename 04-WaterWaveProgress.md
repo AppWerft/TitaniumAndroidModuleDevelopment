@@ -177,28 +177,27 @@ in *handleCreationDict()* we import all javascript arguments to our locale vars:
 		}
 		Log.d(LCAT, "ViewProxy::handleCreationDict finished ");
 	}
-
-	/*
-	 * The progressView class extends the TiUIView class. The TiUIView can be
-	 * added to other Titanium views and windows, which makes it the perfect
-	 * place for a UIView to be added so that it can be displayed in a Titanium
-	 * app. This class creates the native view to display. The class implements
-	 * the the constructor and one method of the TiUIView class, and custom
-	 * setter methods:
-	 */
+```
+The progressView class extends the TiUIView class. The TiUIView can be added to other Titanium views and windows, which makes it the perfect place for a UIView to be added so that it can be displayed in a Titanium app. This class creates the native view to display. The class implements the the constructor and one method of the TiUIView class, and custom setter methods:
+```java
 	public class progressView extends TiUIView {
 		public progressView(TiViewProxy proxy) {
 			super(proxy);
 			Context context  = TiApplication
 					.getInstance().getApplicationContext();
 			Log.d(LCAT, "progressView started");
+```
+With this code snippet we programmatically create a view inside a layout container. it is a pattern for the most viewproxies:
+```java
 			LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT,
 					LayoutParams.WRAP_CONTENT);
 			LinearLayout container = new LinearLayout(proxy.getActivity());
 			container.setLayoutParams(lp);
+```
+Here begins the hit stuff: We instantiate a native view from other package and the we call all setters. These setters substituts the res-XML stuff. Remember: first we copied from javascript layer to viewproxie's instance vars, now we transfer the vars to the native view.
+```java
 
 			mWaterWaveProgressView = new WaterWaveProgress(context);
-
 			mWaterWaveProgressView.setAmplitude(mAmplitude);
 			mWaterWaveProgressView.setCrestCount(mCrestCount);
 			mWaterWaveProgressView.setFontSize(mFontSize);
@@ -239,7 +238,9 @@ in *handleCreationDict()* we import all javascript arguments to our locale vars:
 		}
 	}
 
-	/* I N T E R F A C E S to Titanium */
+```
+These all was properties in constructor. In our case we need one setter to set the progress at runtime. Currently only this is implemented. Attention! these setters must run in main thread (UIthread). To ensure this we need this following construct. If app is not in UI thread we send *sendBlockingMainMessage*. If we have more the one setter it is a goof idea to build a generic solution with switcher. later more.
+```java
 
 	@Kroll.setProperty
 	@Kroll.method
