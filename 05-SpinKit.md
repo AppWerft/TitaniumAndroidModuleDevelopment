@@ -31,4 +31,4 @@ public SpinKitView(Context context) {
     }
 ```
 
-The first method with only one argument calls the second *this(context, null);*. OK, then the second method calls the third and adds *R.attr.SpinKitViewStyle*.  OOps, here we have the evil R.class. We have to avoid this pattern. With other words, we cannot use this class as 1:1 copy.
+The first method with only one argument calls the second *this(context, null);*. OK, then the second method calls the third and adds *R.attr.SpinKitViewStyle*.  OOps, here we have the evil R.class. We have to avoid this pattern. With other words, we cannot use this class as 1:1 copy. The plan is to use the simple (first) constructor and inject the parameters later programmatically and in the end we can call *init()* and *setIndeterminate(true)*.
