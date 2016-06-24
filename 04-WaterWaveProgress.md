@@ -15,6 +15,7 @@ WTF is this R and this res folder? Generally it is possible to build all views p
 
 Now we have two problems: a Titanium project can only contains  one R class and the deveoper aspects an other pattern, he aspects a programmatically pattern.  A main part of converting is to refactore this stuff. 
 
-![]()
+First we create a new empty project and copy from github repo the package tree: 
+![](https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d5.jpg)
 
   
