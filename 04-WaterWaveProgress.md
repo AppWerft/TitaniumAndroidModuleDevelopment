@@ -16,6 +16,27 @@ WTF is this R and this res folder? Generally it is possible to build all views p
 Now we have two problems: a Titanium project can only contains  one R class and the deveoper aspects an other pattern, he aspects a programmatically pattern.  A main part of converting is to refactore this stuff. 
 
 First we create a new empty project and copy from github repo the package tree: 
+
 ![](https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d5.jpg)
 
-  
+In our folder we have created the module and the proxy file. In library tree we have to modify the file *WaterWaveProgress.java*. 
+
+First we analyze the module file. It is very minimalistic because I have deleted all unsused lines:
+
+```java
+package de.appwerft.waterwaveprogress;
+
+import org.appcelerator.kroll.KrollModule;
+import org.appcelerator.kroll.annotations.Kroll;
+import org.appcelerator.titanium.TiApplication;
+
+@Kroll.module(name = "Waterwaveprogress", id = "de.appwerft.waterwaveprogress")
+public class WaterwaveprogressModule extends KrollModule {
+	public WaterwaveprogressModule() {
+		super();
+	}
+	@Kroll.onAppCreate
+	public static void onAppCreate(TiApplication app) {
+	}
+}
+```
