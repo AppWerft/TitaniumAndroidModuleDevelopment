@@ -269,7 +269,9 @@ These all was properties in constructor. In our case we need one setter to set t
 				mWaterWaveProgressView.setProgress(TiConvert.toInt(arg));
 			}
 	}
-
+```
+The following method will not work, because this UIthread trick is still missing:
+```java
 	@Kroll.method
 	public void hideNumerical() {
 		if (mWaterWaveProgressView != null)
