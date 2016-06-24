@@ -22,7 +22,8 @@ First we create a new empty project and copy from github repo the package tree:
 In our folder we have created the module and the proxy file. In library tree we have to modify the file *WaterWaveProgress.java*. 
 
 First we analyze the module file. It is very minimalistic because I have deleted all unsused lines:
-
+WaterwaveprogressModule.java
+----------------------------
 ```java
 package de.appwerft.waterwaveprogress;
 
@@ -41,7 +42,8 @@ public class WaterwaveprogressModule extends KrollModule {
 }
 ```
 
-
+ViewProxy.java
+--------------
 The bigger part is the ViewProxy.java
 ```java
 package de.appwerft.waterwaveprogress;
@@ -334,3 +336,6 @@ The following method will not work, because this UIthread trick is still missing
 
 }
 ```
+
+WaterWaveProgress.java
+----------------------
