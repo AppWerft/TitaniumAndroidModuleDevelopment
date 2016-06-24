@@ -339,3 +339,20 @@ The following method will not work, because this UIthread trick is still missing
 
 WaterWaveProgress.java
 ----------------------
+
+The third job is to modify the original java file from library. The [original class](https://github.com/Modificator/water-wave-progress/blob/master/WaterWaveProgress/src/cn/modificator/waterwave_progress/WaterWaveProgress.java#L83-L96) use this constructor:
+```java
+public WaterWaveProgress(Context paramContext) {
+	super(paramContext);
+}
+public WaterWaveProgress(Context context, AttributeSet attributeSet) {
+	this(context, attributeSet, 0);
+}
+public WaterWaveProgress(Context context, AttributeSet attrs,
+		int defStyleAttr) {
+	super(context, attrs, defStyleAttr);
+	attrInit = new WaterWaveAttrInit(context, attrs, defStyleAttr);
+	init(context);
+}
+
+```
