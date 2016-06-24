@@ -111,13 +111,18 @@ Our class inherits all from TiUiProxy and that's why we have to override some me
 
 	@Override
 	public TiUIView createView(Activity activity) {
+```
+Here we create a new native view and set the dimensions:
+```java
 		TiUIView view = new progressView(this);
 		view.getLayoutParams().autoFillsHeight = true;
 		view.getLayoutParams().autoFillsWidth = true;
-
 		return view;
 	}
 
+```
+in *handleCreationDict()* we import all javascript arguments to our locale vars:
+```java
 	@Override
 	public void handleCreationDict(KrollDict options) {
 		super.handleCreationDict(options);
