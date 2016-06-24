@@ -358,5 +358,5 @@ public WaterWaveProgress(Context context, AttributeSet attrs,
 ```
 In this library you can use the original class. Maybe you can remove the constructors with more then one arguments.
 
-More modifying in original class we need in [Ti.SpinKit](05-SpinKit.java), our next lecture
+More modifying in original class we need in [Ti.SpinKit](05-SpinKit.md), our next lecture
 
