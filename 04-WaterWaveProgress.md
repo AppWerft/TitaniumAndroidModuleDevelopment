@@ -138,8 +138,8 @@ in *handleCreationDict()* we import all javascript arguments to our locale vars:
 		if (options.containsKeyAndNotNull("ringWidth")) {
 			mRingWidth = TiConvert.toFloat(options, "ringWidth");
 		}
-		if (options.containsKeyAndNotNull("fontSize")) {
-			mFontSize = TiConvert.toInt(options, "fontSize");
+		if (options.containsKeyAndNotNull( TiC.PROPERTY_FONT_SIZE)) {
+			mFontSize = TiConvert.toInt(options, TiC.PROPERTY_FONT_SIZE);
 		}
 		if (options.containsKeyAndNotNull("ring2WaterWidth")) {
 			mRing2WaterWidth = TiConvert.toFloat(options, "ring2WaterWidth");
