@@ -519,6 +519,6 @@ This private helper function collect all stuff from list and calculate prize.
 
 }
 ```
-
+In next chapter we learn to build an [own viewproxy](04-WaterWaveProgress.md).
 
 
