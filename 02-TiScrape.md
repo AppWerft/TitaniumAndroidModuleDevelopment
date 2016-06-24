@@ -11,7 +11,7 @@ First we use [jsoup](https://jsoup.org/download) as jar file. For this we right 
 
 
 With "Add External Jar" we select the jar from filesystem. Commonly we have copied it into lib.
-=======
+
 First we download the file *jsoup-1.9.2.jar* to our lib folder. This is the standard folder for this. With *Add external Jar* we select the jar from filesystem. 
 
 A moderne form of jar is aar. An aar is a jar plus resources. If we only find a aar in net , the we can convert this aar into jar in three steps:
