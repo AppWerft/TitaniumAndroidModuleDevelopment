@@ -356,3 +356,5 @@ public WaterWaveProgress(Context context, AttributeSet attrs,
 }
 
 ```
+In this library you can use the original class. Maybe you can remove the constructors with more then one arguments.
+
