@@ -103,13 +103,7 @@ Here begins the magic with our native view, which is called in viewproxy:
 		public SpinnerView(final TiViewProxy proxy) {
 			super(proxy);
 ```
-First we build a container:
-```java			
-			LinearLayout container = new LinearLayout(proxy.getActivity());
-			container.setLayoutParams(new LayoutParams(
-					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-```
-and create a SpinKitView from library class:
+First we create a SpinKitView from library class:
 ```java			
 			view = new SpinKitView(proxy.getActivity());
 ```
@@ -162,8 +156,10 @@ and now we call the stuff from library class (we hoisted it from there to here)
 			}
 			sprite.setColor(spinnerColor);
 			view.setIndeterminateDrawable(sprite);
-			container.addView(view);
-			setNativeView(container);
+```
+Following statement is important. It binds the native view to javascript layer.
+```java
+			setNativeView(view);
 		}
 
 		@Override
