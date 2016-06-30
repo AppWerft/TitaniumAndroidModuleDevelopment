@@ -164,6 +164,19 @@ Additional we add *aacdecoder-android-0.8.jar* to our Buildpath:
 
 ##Code modifications
 
+###Using of constants
+For better legibility we use for states constants. The Kroll.annotation exports to jacascript layer. So we cann these constanst in javascript too.
+```java
+@Kroll.constant
+public static final int STATE_STOPPED = 0;
+@Kroll.constant
+public static final int STATE_STARTED = 1;
+@Kroll.constant
+public static final int STATE_PLAYING = 2;
+@Kroll.constant
+public static final int STATE_STREAMERROR = 3;
+```
+
 ###Extending of play()-parameters
 In the original version of Trevor the Kroll.method *play()* has only one parameter *url*. We want extend this and need a KrollDict for it. For compatibilty reasons we need a switch:
 
