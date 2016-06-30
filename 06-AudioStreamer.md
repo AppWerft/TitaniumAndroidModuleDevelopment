@@ -55,9 +55,9 @@ Let's open the  file *.project*:
 We add two line into *natures* and now we have:
 
 ```xml
-><natures>
+<natures>
      <nature>org.eclipse.jdt.core.javanature</nature>
      <nature>com.appcelerator.titanium.mobile.module.nature</nature>
      <nature>com.appcelerator.titanium.mobile.module.nature</nature>
-     </natures>
+</natures>
 ```
