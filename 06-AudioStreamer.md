@@ -113,8 +113,8 @@ Using of precompiled aacdecoder.so's
 ------------------------------------
 
 Since Marshmellow the makes trouble with old binaries (text relocations). thats why we need new one.
-We download from [here](https://github.com/trevorf/ti-android-streamer/issues/7) the android.zip. In our project folder we create a folder lib with three subfolders and copy all stuff into:
+We download from [here](https://github.com/trevorf/ti-android-streamer/issues/7) the [android.zip](https://github.com/vbartacek/aacdecoder-android/files/90565/android.zip). In our project folder we create a folder lib with three subfolders and copy all stuff into:
 
 
-Code modifactions
------------------
+Code modifications
+------------------
