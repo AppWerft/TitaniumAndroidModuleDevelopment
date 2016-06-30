@@ -229,5 +229,9 @@ In original version of Trevors module is a functionality coded, which pauses the
 1. after telephone call the app crashes.
 2. Since Marshmellow the app needs runtime permissions for requesting telephone state, maybe we do not because there are anxious users.
 3. We can use an other module to realize this smart feature from outside
+4. Instantiating is part of onAppCreate node. We cannot control it by paramters
+Conclusion: we remove this part.
+
+
 
 
