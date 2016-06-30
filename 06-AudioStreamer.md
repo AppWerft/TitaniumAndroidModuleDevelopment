@@ -10,4 +10,11 @@ The module is a proxy between javascript layer and the library [aacdecoder](http
 
 The main functionality works in Václav's library. It connects to server, decides the protocol and calls the native decoder. For decoding we need a C++-library from [Freeware Advanced Audio (AAC) Decoder for Android](http://www.spoledge.com)
 
+Setup
+-----
+
+First we fork the project from Trevors repo:
+
+<img src="" width="300px">
+
 
