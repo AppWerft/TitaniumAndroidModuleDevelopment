@@ -113,7 +113,28 @@ Using of precompiled aacdecoder.so's
 ------------------------------------
 
 Since Marshmellow the makes trouble with old binaries (text relocations). thats why we need new one.
-We download from [here](https://github.com/trevorf/ti-android-streamer/issues/7) the [android.zip](https://github.com/vbartacek/aacdecoder-android/files/90565/android.zip). In our project folder we create a folder lib with three subfolders and copy all stuff into:
+We download from [here](https://github.com/trevorf/ti-android-streamer/issues/7) the [android.zip](https://github.com/vbartacek/aacdecoder-android/files/90565/android.zip). In our project folder we create a folder lib with three subfolders and copy all stuff into lib folder:
+We see these:
+```
+Rainers-MacBook-Pro-2:Ti-android-streamer fuerst$ ls ;ls -l lib/*
+CHANGELOG.txt		android			build.xml		hooks			platform
+LICENSE			assets			dist			lib			src
+LICENSE.txt		build			documentation		libs			timodule.xml
+README.md		build.properties	example			manifest
+-rw-rw-r--@ 1 fuerst  staff  32724 Jan 14 11:07 lib/aacdecoder-android-0.8.jar
+
+lib/armeabi:
+-rwxr-xr-x@ 1 fuerst  staff  230588 Jan 14 11:07 libaacdecoder.so
+
+lib/armeabi-v7a:
+-rwxr-xr-x@ 1 fuerst  staff  226500 Jan 14 11:07 libaacdecoder.so
+
+lib/mips:
+-rwxr-xr-x@ 1 fuerst  staff  342760 Jan 14 11:07 libaacdecoder.so
+
+lib/x86:
+-rwxr-xr-x@ 1 fuerst  staff  255068 Jan 14 11:07 libaacdecoder.so
+```
 
 
 Code modifications
