@@ -137,8 +137,9 @@ lib/x86:
 ```
 
 
-Code modifications
-------------------
+##Code modifications
+
+###Extending of play()-parameters
 In the original version of Trevor the Kroll.method *play()* has only one parameter *url*. We want extend this and need a KrollDict for it. For compatibilty reasons we need a switch:
 
 ```java
@@ -183,3 +184,20 @@ public void play(Object args) {
 	}
 }
 ```
+###Callback of audioSessionId
+
+For usage of Visualizer we need the audioSessionId, which is generated of AudioTrack.
+The method play() of Václav's Multiplayer will call with PlayerCallback-interface. This implementation we overrid with 
+```java
+@Override
+public void playerAudioTrackCreated(AudioTrack audiotrack) {
+	audioSessionId = audiotrack.getAudioSessionId();
+	if (hasListeners("ready")) {
+		KrollDict props = new KrollDict();
+		props.put("audioSessionId", audioSessionId);
+		fireEvent("ready", props);
+	} else
+		Log.e(LOG, "cannot fire event =" + audioSessionId);
+}
+```
+###Removing of telephony stuff
