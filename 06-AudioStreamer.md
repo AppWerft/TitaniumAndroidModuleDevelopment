@@ -21,10 +21,11 @@ First we fork the project from Trevors repo:
 
 Now we go to repo of Václav and download the zipped stuff. After unzipping we copy the tree into project:
 
-<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d8.png" width="400px">
+<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d8.png" width="500px">
 
 We will  use the precompiled version of aacdecoder.so. If we would compile self we have to copy the jni folder.
 
 After copieing we see this folder structur:
-<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d9.png" width="400px">
+
+<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d9.png" width="300px">
 
