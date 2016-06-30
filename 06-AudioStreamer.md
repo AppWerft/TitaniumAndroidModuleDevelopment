@@ -51,3 +51,13 @@ Let's open the  file *.project*:
 	</natures>
 </projectDescription>
 ```
+
+We add two line into *natures* and now we have:
+
+```xml
+><natures>
+     <nature>org.eclipse.jdt.core.javanature</nature>
+     <nature>com.appcelerator.titanium.mobile.module.nature</nature>
+     <nature>com.appcelerator.titanium.mobile.module.nature</nature>
+     </natures>
+```
