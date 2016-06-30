@@ -143,19 +143,22 @@ In the original version of Trevor the Kroll.method *play()* has only one paramet
 
 ```java
 @Kroll.method
-public void play(KrollDict args) {
+public void play(Object args) {
 	String url = null, charset = "UTF-8";
 	int expectedKBitSecRate = 0; // auto
-	if (args != null) {
-		if (args.containsKeyAndNotNull("url")) {
-			url = args.getString("url");
+	if (args instanceof KrollDict) {
+		KrollDict dict = (KrollDict)args;
+		if (dict.containsKeyAndNotNull("url")) {
+			url = dict.getString("url");
 		}
-		if (args.containsKeyAndNotNull("charset")) {
-			charset = args.getString("charset");
+		if (dict.containsKeyAndNotNull("charset")) {
+			charset = dict.getString("charset");
 		}
-		if (args.containsKeyAndNotNull("expectedKBitSecRate")) {
-			expectedKBitSecRate = args.getInt("expectedKBitSecRate");
+		if (dict.containsKeyAndNotNull("expectedKBitSecRate")) {
+			expectedKBitSecRate = dict.getInt("expectedKBitSecRate");
 		}
+	} else if  (args instanceof String) {
+		url = (String)args;	
 	}
 	if (!isCurrentlyPlaying) {
 		try {
