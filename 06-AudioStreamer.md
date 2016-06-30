@@ -19,4 +19,4 @@ First we fork the project from Trevors repo:
 
 <img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d7.png" width="400px">
 
-
+Now we go to repo of Václav and download the zipped stuff. After unzipping we copy the tree into project:
