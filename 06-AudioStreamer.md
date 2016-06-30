@@ -61,6 +61,28 @@ We add two line into *natures* and now we have:
      <nature>com.appcelerator.titanium.mobile.module.nature</nature>
 </natures>
 ```
+
+After forking the '.classpath' is missing. You can see it in Project/Properties in IDE too. Here a valid file:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="android/src"/>
+	<classpathentry kind="src" path="android/build/.apt_generated"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Library/android-sdk-macosx/platforms/android-23/android.jar"/>
+	<classpathentry kind="lib" path="/Users/fuerst/Library/android-sdk-macosx/add-ons/addon-google_apis-google-23/libs/maps.jar"/>
+	<classpathentry kind="lib" path="/Library/Application Support/Titanium/mobilesdk/osx/5.2.0.GENPERM/android/titanium.jar"/>
+	<classpathentry kind="lib" path="/Library/Application Support/Titanium/mobilesdk/osx/5.2.0.GENPERM/android/kroll-common.jar"/>
+	<classpathentry kind="lib" path="/Library/Application Support/Titanium/mobilesdk/osx/5.2.0.GENPERM/android/kroll-apt.jar"/>
+	<classpathentry kind="src" path=".apt_generated">
+		<attributes>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
+```
+
 For pull request to Trevor's repo we need a .gitignore to supress pushing unused stuff. For this we open a shell (please green letters on black background!) and type in project root:
 
 ```
