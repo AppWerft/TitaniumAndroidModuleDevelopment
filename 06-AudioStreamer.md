@@ -109,8 +109,11 @@ android/build
 bin
 ```
 
-Using of precompiled *.so's
----------------------------
+Using of precompiled aacdecoder.so's
+------------------------------------
+
+Since Marshmellow the makes trouble with old binaries (text relocations). thats why we need new one.
+We download from [here](https://github.com/trevorf/ti-android-streamer/issues/7)
 
 
 Code modifactions
