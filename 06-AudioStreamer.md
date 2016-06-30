@@ -19,15 +19,7 @@ First we fork the project from Trevors repo:
 
 <img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d7.png" width="400px">
 
-Now we go to repo of Václav and download the zipped stuff. After unzipping we copy the tree into project:
-
-<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d8.png" width="600px">
-
-We will  use the precompiled version of aacdecoder.so. If we would compile self we have to copy the jni folder.
-
-After copyeing we see this folder structur:
-
-<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d9.png" width="240px">
+The *aacdecoder-android-0.8.jar* we copy into lib folder.
 
 If we fork a project from git then the project has the wrong project nature and we cannot use the advantages of eclipse.
 
