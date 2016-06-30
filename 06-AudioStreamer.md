@@ -171,21 +171,36 @@ In the original version of Trevor the Kroll.method *play()* has only one paramet
 @Kroll.method
 public void play(Object args) {
 	String url = null, charset = "UTF-8";
-	int expectedKBitSecRate = 0; // auto
-	if (args instanceof KrollDict) {
-		KrollDict dict = (KrollDict)args;
-		if (dict.containsKeyAndNotNull("url")) {
-			url = dict.getString("url");
+		int expectedKBitSecRate = 0; // auto
+		Log.d(LCAT,
+				">>>>>>>>>>>>>>>>>>> Starting native streaming player with args="
+						+ args.toString());
+		if (args != null) {
+			if (args instanceof HashMap) {
+				Log.d(LCAT, "args are Dict/HashMap");
+				KrollDict dict = null;
+				try {
+					dict = new KrollDict((HashMap<String, Object>) args);
+				} catch (Exception e) {
+					Log.e(LCAT, "Unable to parse args" + args.toString());
+					return;
+				}
+				if (dict.containsKeyAndNotNull("url")) {
+					url = dict.getString("url");
+				}
+				if (dict.containsKeyAndNotNull("charset")) {
+					charset = dict.getString("charset");
+				}
+				if (dict.containsKeyAndNotNull("expectedKBitSecRate")) {
+					expectedKBitSecRate = dict.getInt("expectedKBitSecRate");
+				}
+			} else if (args instanceof String) {
+				Log.d(LCAT, "args is String");
+				url = (String) args;
+			} else {
+				Log.d(LCAT, "args either dict or string");
+			}
 		}
-		if (dict.containsKeyAndNotNull("charset")) {
-			charset = dict.getString("charset");
-		}
-		if (dict.containsKeyAndNotNull("expectedKBitSecRate")) {
-			expectedKBitSecRate = dict.getInt("expectedKBitSecRate");
-		}
-	} else if  (args instanceof String) {
-		url = (String)args;	
-	}
 	if (!isCurrentlyPlaying) {
 		try {
 			if (aacPlayer == null) {
