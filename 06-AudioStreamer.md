@@ -160,7 +160,7 @@ lib/x86:
 
 Additional we add *aacdecoder-android-0.8.jar* to our Buildpath:
 
-<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d10.png" width="240px">
+<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d10.png" width="640px">
 
 ##Code modifications
 
