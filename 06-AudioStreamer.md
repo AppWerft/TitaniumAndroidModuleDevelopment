@@ -135,7 +135,7 @@ Using of precompiled aacdecoder.so's
 ------------------------------------
 
 Since Marshmellow the makes trouble with old binaries (text relocations). thats why we need new one.
-We download from [here](https://github.com/trevorf/ti-android-streamer/issues/7) the [android.zip](https://github.com/vbartacek/aacdecoder-android/files/90565/android.zip). In our project folder we create a folder lib with three subfolders and copy all stuff into lib folder:
+We download from [here](https://github.com/trevorf/ti-android-streamer/issues/7) the [android.zip](https://github.com/vbartacek/aacdecoder-android/files/90565/android.zip). In our project folder we create a folder lib with three subfolders and copy all stuff into lib and libs folder:
 We see these:
 ```
 Rainers-MacBook-Pro-2:Ti-android-streamer fuerst$ ls ;ls -l lib/*
@@ -158,6 +158,9 @@ lib/x86:
 -rwxr-xr-x@ 1 fuerst  staff  255068 Jan 14 11:07 libaacdecoder.so
 ```
 
+Additional we add *aacdecoder-android-0.8.jar* to our Buildpath:
+
+<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d10.png" width="240px">
 
 ##Code modifications
 
