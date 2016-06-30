@@ -61,3 +61,10 @@ We add two line into *natures* and now we have:
      <nature>com.appcelerator.titanium.mobile.module.nature</nature>
 </natures>
 ```
+For pull request to Trevor's repo we need a .gitignore to supress pushing unused stuff. For this we open a shell (please green letters on black background!) and type in project root:
+
+```
+ls -1a > .gitignore
+```
+
+Now we can open the created file *.gitignore* with an editor your choise (vi, pico, joe, mc … notepad)
