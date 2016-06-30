@@ -108,3 +108,10 @@ LICENSE.txt
 android/build
 bin
 ```
+
+Using of precompiled *.so's
+---------------------------
+
+
+Code modifactions
+-----------------
