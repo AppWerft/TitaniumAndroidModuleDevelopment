@@ -8,4 +8,6 @@ This module allows to stream aac/mp3 from live radio stations. Radiotext will su
 The module is a proxy between javascript layer and the library [aacdecoder](https://github.com/vbartacek/aacdecoder-android) from Václav Bartáček.
 <img src="https://avatars0.githubusercontent.com/u/11479601?v=3&s=460" width="80px""/>
 
+The main functionality works in Václav's library. It connects to server, decides the protocol and calls the native decoder. For decoding we need a C++-library
+
 
