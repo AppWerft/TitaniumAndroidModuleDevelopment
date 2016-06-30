@@ -67,4 +67,39 @@ For pull request to Trevor's repo we need a .gitignore to supress pushing unused
 ls -1a > .gitignore
 ```
 
-Now we can open the created file *.gitignore* with an editor your choise (vi, pico, joe, mc … notepad)
+Now we can open the created file *.gitignore* with an editor your choise (vi, pico, joe, mc … notepad) and we see lines like:
+
+```
+.
+..
+.git
+.gitignore
+.manifest.swp
+.project
+CHANGELOG.txt
+LICENSE
+LICENSE.txt
+README.md
+android
+assets
+build
+build.properties
+build.xml
+dist
+documentation
+example
+hooks
+libs
+manifest
+platform
+src
+timodule.xml
+```
+
+We can now remove all used folders:
+```
+.project
+README.md
+android/build
+build
+```
