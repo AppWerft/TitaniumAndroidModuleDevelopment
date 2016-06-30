@@ -98,8 +98,13 @@ timodule.xml
 
 We can now remove all used folders:
 ```
-.project
-README.md
 android/build
 build
+.apt_generated
+.gitignore
+.project
+CHANGELOG.txt
+LICENSE.txt
+android/build
+bin
 ```
