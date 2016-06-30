@@ -21,11 +21,33 @@ First we fork the project from Trevors repo:
 
 Now we go to repo of Václav and download the zipped stuff. After unzipping we copy the tree into project:
 
-<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d8.png" width="500px">
+<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d8.png" width="600px">
 
 We will  use the precompiled version of aacdecoder.so. If we would compile self we have to copy the jni folder.
 
-After copieing we see this folder structur:
+After copyeing we see this folder structur:
 
-<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d9.png" width="300px">
+<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d9.png" width="240px">
 
+If we fork a project from git then the project has the wrong project nature and we cannot use the advantages of eclipse.
+
+Let's open the  file *.project*:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>AudioStreamer</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.appcelerator.titanium.core.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.appcelerator.titanium.mobile.module.nature</nature>
+	</natures>
+</projectDescription>
+```
