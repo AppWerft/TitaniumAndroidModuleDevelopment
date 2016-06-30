@@ -139,3 +139,44 @@ lib/x86:
 
 Code modifications
 ------------------
+In the original version of Trevor the Kroll.method *play()* has only one parameter *url*. We want extend this and need a KrollDict for it. For compatibilty reasons we need a switch:
+
+```java
+@Kroll.method
+public void play(KrollDict args) {
+	String url = null, charset = "UTF-8";
+	int expectedKBitSecRate = 0; // auto
+	if (args != null) {
+		if (args.containsKeyAndNotNull("url")) {
+			url = args.getString("url");
+		}
+		if (args.containsKeyAndNotNull("charset")) {
+			charset = args.getString("charset");
+		}
+		if (args.containsKeyAndNotNull("expectedKBitSecRate")) {
+			expectedKBitSecRate = args.getInt("expectedKBitSecRate");
+		}
+	}
+	if (!isCurrentlyPlaying) {
+		try {
+			if (aacPlayer == null) {
+				aacPlayer = new MultiPlayer(playerCallback);
+			}
+			currentUrl = url;
+			currentCharset = charset;
+			if (expectedKBitSecRate == 0) {
+				aacPlayer.playAsync(url);
+			} else {
+				// aacPlayer.playAsync(url, expectedKBitSecRate);
+			}
+			if (charset != null)
+				aacPlayer.setMetadataCharEnc(charset);
+			isCurrentlyPlaying = true;
+		} catch (Throwable t) {
+			Log.e(LOG, "Error starting stream: " + t);
+		}
+	} else {
+		Log.e(LOG, "Player was currently playing");
+	}
+}
+```
