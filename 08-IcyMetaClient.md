@@ -11,4 +11,10 @@ Now we have two ways t read this meta:
 1. usage of special streaming client like [Trevor's one](https://github.com/trevorf/ti-android-streamer). It realize both: the sound data and meta data
 2. or we debundle the problem and uses a  special client only for meta.
 
-An inspiration for us is this [snippet](https://github.com/shinymayhem/radio-presets-widget/blob/master/src/com/radiopirate/android/service/IcyStreamMeta.java)
+An inspiration for us is this [snippet](https://github.com/shinymayhem/radio-presets-widget/blob/master/src/com/radiopirate/android/service/IcyStreamMeta.java) The code improvements: 
+
+1. the client should run as async task
+2. the regex to parse the answer is bad (sometimes the value contains ';')
+
+ 
+
