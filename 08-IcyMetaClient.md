@@ -116,16 +116,7 @@ Here we expose a set of methods to javascript:
 		metaClient.stopTimer();
 	}
 
-	@Kroll.method
-	public String getStreamTitle() throws IOException {
-		return metaClient.getStreamTitle();
-	}
-
-	@Kroll.method
-	public String getArtist() throws IOException {
-		return metaClient.getArtist();
-	}
-
+	
 	@Kroll.method
 	public void setStreamUrl(String url) throws IOException {
 		metaClient.setStreamUrl(new URL(url));
@@ -134,11 +125,6 @@ Here we expose a set of methods to javascript:
 	@Kroll.method
 	public boolean isError() {
 		return metaClient.isError();
-	}
-
-	@Kroll.method
-	public String getTitle() throws IOException {
-		return metaClient.getTitle();
 	}
 
 	@Kroll.method
@@ -208,39 +194,7 @@ Here the kernel - our logic:
 			return streamUrl;
 		}
 
-		public String getStreamTitle() throws IOException {
-			Map<String, String> data = getMetadata();
-			if (data == null) {
-				return "";
-			}
-			if (!data.containsKey("StreamTitle"))
-				return "";
-			return data.get("StreamTitle").trim();
-		}
-
-		public String getArtist() throws IOException,
-				StringIndexOutOfBoundsException {
-			Map<String, String> data = getMetadata();
-			if (data == null || !data.containsKey("StreamTitle")) {
-				return "";
-			}
-			String streamTitle = data.get("StreamTitle");
-			String title = streamTitle.substring(0, streamTitle.indexOf("-"));
-			return title.trim();
-		}
-
-		public String getTitle() throws IOException,
-				StringIndexOutOfBoundsException {
-			Map<String, String> data = getMetadata();
-
-			if (data == null || !data.containsKey("StreamTitle")) {
-				return "";
-			}
-			String streamTitle = data.get("StreamTitle");
-			String artist = streamTitle.substring(streamTitle.indexOf("-") + 1);
-			return artist.trim();
-		}
-
+		
 		public void refreshMeta() throws IOException {
 			retreiveMetadata();
 		}
