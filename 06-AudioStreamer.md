@@ -19,15 +19,7 @@ First we fork the project from Trevors repo:
 
 <img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d7.png" width="400px">
 
-Now we go to repo of Václav and download the zipped stuff. After unzipping we copy the tree into project:
-
-<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d8.png" width="600px">
-
-We will  use the precompiled version of aacdecoder.so. If we would compile self we have to copy the jni folder.
-
-After copyeing we see this folder structur:
-
-<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d9.png" width="240px">
+The *aacdecoder-android-0.8.jar* we copy into lib folder.
 
 If we fork a project from git then the project has the wrong project nature and we cannot use the advantages of eclipse.
 
@@ -135,7 +127,7 @@ Using of precompiled aacdecoder.so's
 ------------------------------------
 
 Since Marshmellow the makes trouble with old binaries (text relocations). thats why we need new one.
-We download from [here](https://github.com/trevorf/ti-android-streamer/issues/7) the [android.zip](https://github.com/vbartacek/aacdecoder-android/files/90565/android.zip). In our project folder we create a folder lib with three subfolders and copy all stuff into lib folder:
+We download from [here](https://github.com/trevorf/ti-android-streamer/issues/7) the [android.zip](https://github.com/vbartacek/aacdecoder-android/files/90565/android.zip). In our project folder we create a folder lib with three subfolders and copy all stuff into lib and libs folder:
 We see these:
 ```
 Rainers-MacBook-Pro-2:Ti-android-streamer fuerst$ ls ;ls -l lib/*
@@ -158,8 +150,24 @@ lib/x86:
 -rwxr-xr-x@ 1 fuerst  staff  255068 Jan 14 11:07 libaacdecoder.so
 ```
 
+Additional we add *aacdecoder-android-0.8.jar* to our Buildpath:
+
+<img src="https://raw.githubusercontent.com/AppWerft/TitaniumAndroidModuleDevelopment/master/images/d10.png" width="640px">
 
 ##Code modifications
+
+###Using of constants
+For better legibility we use for states constants. The Kroll.annotation exports to jacascript layer. So we cann these constanst in javascript too.
+```java
+@Kroll.constant
+public static final int STATE_STOPPED = 0;
+@Kroll.constant
+public static final int STATE_STARTED = 1;
+@Kroll.constant
+public static final int STATE_PLAYING = 2;
+@Kroll.constant
+public static final int STATE_STREAMERROR = 3;
+```
 
 ###Extending of play()-parameters
 In the original version of Trevor the Kroll.method *play()* has only one parameter *url*. We want extend this and need a KrollDict for it. For compatibilty reasons we need a switch:
@@ -168,21 +176,36 @@ In the original version of Trevor the Kroll.method *play()* has only one paramet
 @Kroll.method
 public void play(Object args) {
 	String url = null, charset = "UTF-8";
-	int expectedKBitSecRate = 0; // auto
-	if (args instanceof KrollDict) {
-		KrollDict dict = (KrollDict)args;
-		if (dict.containsKeyAndNotNull("url")) {
-			url = dict.getString("url");
+		int expectedKBitSecRate = 0; // auto
+		Log.d(LCAT,
+				">>>>>>>>>>>>>>>>>>> Starting native streaming player with args="
+						+ args.toString());
+		if (args != null) {
+			if (args instanceof HashMap) {
+				Log.d(LCAT, "args are Dict/HashMap");
+				KrollDict dict = null;
+				try {
+					dict = new KrollDict((HashMap<String, Object>) args);
+				} catch (Exception e) {
+					Log.e(LCAT, "Unable to parse args" + args.toString());
+					return;
+				}
+				if (dict.containsKeyAndNotNull("url")) {
+					url = dict.getString("url");
+				}
+				if (dict.containsKeyAndNotNull("charset")) {
+					charset = dict.getString("charset");
+				}
+				if (dict.containsKeyAndNotNull("expectedKBitSecRate")) {
+					expectedKBitSecRate = dict.getInt("expectedKBitSecRate");
+				}
+			} else if (args instanceof String) {
+				Log.d(LCAT, "args is String");
+				url = (String) args;
+			} else {
+				Log.d(LCAT, "args either dict or string");
+			}
 		}
-		if (dict.containsKeyAndNotNull("charset")) {
-			charset = dict.getString("charset");
-		}
-		if (dict.containsKeyAndNotNull("expectedKBitSecRate")) {
-			expectedKBitSecRate = dict.getInt("expectedKBitSecRate");
-		}
-	} else if  (args instanceof String) {
-		url = (String)args;	
-	}
 	if (!isCurrentlyPlaying) {
 		try {
 			if (aacPlayer == null) {
