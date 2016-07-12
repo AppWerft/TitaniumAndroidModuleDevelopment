@@ -31,18 +31,24 @@ public class IcyMetaClientProxy extends KrollProxy implements OnLifecycleEvent {
 	IcyStreamMeta metaClient = null;
 	KrollFunction loadCallback = null;
 	KrollFunction errorCallback = null;
-
-	// Constructor
+```
+In constructor of KrollProxy we create an instance of the IcyStreamMeta class:
+```java
 	public IcyMetaClientProxy() {
 		super();
 		metaClient = new IcyStreamMeta();
 	}
-
+```
+Here we import all options from javascript layer:
+```java
 	// Handle creation options
 	@Override
 	public void handleCreationDict(KrollDict options) {
 		Log.d(LCAT, "Start handleCreationDict");
 		super.handleCreationDict(options);
+```
+It is a good coding style to validate the URL parameter:
+```java
 		if (options.containsKey(TiC.PROPERTY_URL)) {
 			try {
 				url = new URL(options.getString(TiC.PROPERTY_URL));
@@ -64,6 +70,9 @@ public class IcyMetaClientProxy extends KrollProxy implements OnLifecycleEvent {
 			if (this.autoStart)
 				metaClient.startTimer();
 		}
+```
+For async callback communication we use two endpoints: 
+```java
 		if (options.containsKey(TiC.PROPERTY_ONLOAD)) {
 			Object cb = options.get(TiC.PROPERTY_ONLOAD);
 			if (cb instanceof KrollFunction) {
@@ -88,6 +97,9 @@ public class IcyMetaClientProxy extends KrollProxy implements OnLifecycleEvent {
 			}
 		}
 	}
+```
+Here we expose a set of methods to javascript:
+```java
 
 	@Kroll.method
 	public String getStreamURL() {
@@ -96,7 +108,6 @@ public class IcyMetaClientProxy extends KrollProxy implements OnLifecycleEvent {
 
 	@Kroll.method
 	public void start() {
-
 		metaClient.startTimer();
 	}
 
@@ -134,20 +145,9 @@ public class IcyMetaClientProxy extends KrollProxy implements OnLifecycleEvent {
 	public void refreshMeta() throws IOException {
 		metaClient.refreshMeta();
 	}
-
-	@Override
-	public void onDestroy(Activity activity) {
-		isForeGround = false;
-		super.onDestroy(activity);
-	}
-
-	@Override
-	public void onStop(Activity activity) {
-		isForeGround = false;
-		Log.d(LCAT, "onStop <<<<<<<<<<<<<");
-		super.onStop(activity);
-	}
-
+```
+These methods currently never fired. Target was to suppress net activities during sleeping.
+```java
 	@Override
 	public void onResume(Activity activity) {
 		super.onResume(activity);
@@ -167,6 +167,9 @@ public class IcyMetaClientProxy extends KrollProxy implements OnLifecycleEvent {
 		Log.d(LCAT, "onStart >>>>>>>>>>");
 		isForeGround = true;
 	}
+```
+Here the kernel - our logic:
+```java
 
 	private class IcyStreamMeta {
 		private URL streamUrl;
