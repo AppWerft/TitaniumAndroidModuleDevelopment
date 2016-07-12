@@ -226,6 +226,9 @@ Here the kernel - our logic:
 				Log.e(LCAT, "errorCallback is null");
 
 		}
+```
+The server give us a binary stream, we have to convert to string. The real data comes after metaDataOffset, therefore we have to jump into right position:
+```java
 
 		private String Stream2String(InputStream stream, int metaDataOffset) {
 
@@ -239,7 +242,6 @@ Here the kernel - our logic:
 			int count = 0;
 			int metaDataLength = BLOCKSIZE * 255; // 4080 is the max length (16
 
-			// https://github.com/thkoch2001/juniversalchardet/blob/master/example/TestDetector.java
 			byte[] bytesOfMetaData = new byte[metaDataLength + 1];
 			boolean inData = false;
 			try {
@@ -280,6 +282,9 @@ Here the kernel - our logic:
 			else
 				return null;
 		}
+```
+The protocol doesn't contain data about charset but it proposes UTF-8. A lot of streaming sender (Ö1, WDR) uses Latin-1. It wbecomes a  problem if the text contains umlaute. The method 'guessEncoding' never detects a charset, don't no why. 
+```java
 
 		public String guessEncoding(byte[] bytes) {
 			String DEFAULT_ENCODING = "UTF-8";
@@ -294,13 +299,19 @@ Here the kernel - our logic:
 			}
 			return encoding;
 		}
-
+```
+This is the part that speals with server. We start it as asnc task:
+```java
 		private void retreiveMetadata() {
 			// Log.d(LCAT, "isForeGround=" + isForeGround);
 			AsyncTask<Void, Void, Void> doRequest = new AsyncTask<Void, Void, Void>() {
 				protected Void doInBackground(Void[] dummy) {
 					// http://www.javased.com/?api=java.net.URLConnection
 					URLConnection con = null;
+```
+In this KrollDict we collect all stuff:
+```java
+
 					KrollDict resultDict = new KrollDict();
 					try {
 						con = streamUrl.openConnection();
@@ -308,7 +319,15 @@ Here the kernel - our logic:
 						sendError(e.getMessage());
 						return null;
 					}
+```
+Very important: this tells the server, we need more then audio:
+```java
+					
 					con.setRequestProperty("Icy-MetaData", "1");
+```
+But only the data, no audio
+```java
+					
 					con.setRequestProperty("Connection", "close");
 					try {
 						con.connect();
@@ -316,6 +335,10 @@ Here the kernel - our logic:
 						sendError(e.getMessage());
 						return null;
 					}
+```
+Now we analye some headers:
+```java
+
 					int metaDataOffset = 0;
 					Map<String, List<String>> headers = con.getHeaderFields();
 					if (headers.containsKey("icy-name")) {
@@ -339,6 +362,9 @@ Here the kernel - our logic:
 						Log.e(LCAT, "metaDataOffset=0");
 						return null;
 					}
+```
+and now we parse the body:
+```java
 
 					String metaString = Stream2String(stream, metaDataOffset);
 					if (metaString == null) {
@@ -361,9 +387,9 @@ Here the kernel - our logic:
 
 						}
 					}
-					Log.d(LCAT, resultDict.toString());
-					// if (metaDataOffset != 1)
-					// return null;
+```
+We remember the old state in a hash, because we want only send back to jaavscript layer after change of meta data
+```java
 					if (resultDict.hashCode() != oldHash) {
 						if (loadCallback != null)
 							loadCallback.call(getKrollObject(), resultDict);
