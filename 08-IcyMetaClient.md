@@ -171,6 +171,9 @@ Here the kernel - our logic:
 			timer = new Timer();
 		}
 
+```
+The equivalent to javascript's setInterval() is these construct:
+```java
 		public void startTimer() {
 			retreiveMetadata();
 			if (pullInterval != 0) {
@@ -183,7 +186,9 @@ Here the kernel - our logic:
 				isRunning = true;
 			}
 		}
-
+```
+And so we can stop the game:
+```java
 		public void stopTimer() {
 			timer.cancel();
 			isRunning = false;
@@ -203,7 +208,6 @@ Here the kernel - our logic:
 			if (metadata == null) {
 				refreshMeta();
 			}
-
 			return metadata;
 		}
 
