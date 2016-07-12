@@ -19,32 +19,8 @@ An inspiration for us is this [snippet](https://github.com/shinymayhem/radio-pre
 ```java
 package de.appwerft.icymetaclient;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-//import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import org.appcelerator.kroll.KrollDict;
-import org.appcelerator.kroll.KrollFunction;
-import org.appcelerator.kroll.KrollProxy;
-import org.appcelerator.kroll.annotations.Kroll;
-import org.appcelerator.kroll.common.Log;
-import org.appcelerator.titanium.TiC;
-import org.appcelerator.titanium.TiContext.OnLifecycleEvent;
-
-import android.app.Activity;
-import android.os.AsyncTask;
-
-// This proxy can be created by calling Icystreammeta.createExample({message: "hello world"})
 @Kroll.proxy(creatableInModule = IcymetaclientModule.class)
 public class IcyMetaClientProxy extends KrollProxy implements OnLifecycleEvent {
-	// Standard Debugging variables
 	private static final String LCAT = "ICYMETA";
 	private URL url = null;
 	private int pullInterval = 0; // sec
