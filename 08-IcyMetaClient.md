@@ -39,6 +39,15 @@ In constructor of KrollProxy we create an instance of the IcyStreamMeta class:
 		metaClient = new IcyStreamMeta();
 	}
 ```
+This is the try to add this 'OnLifecycleEventListener', but it doesn't work ;-(
+```java
+    @Override
+    public void initActivity(Activity activity) {
+        super.initActivity(activity);
+        ((TiBaseActivity) getActivity()).addOnLifecycleEventListener(this);
+
+    }
+```
 Here we import all options from javascript layer:
 ```java
 	// Handle creation options
