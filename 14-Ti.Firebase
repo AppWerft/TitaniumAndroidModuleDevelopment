@@ -1,0 +1,43 @@
+#Ti.Firebase
+
+First we need same stuff for start.
+##google-services.json
+
+In older google world the communication between google and you app was running by simple strings like appId, appSecret etc. Now google SDK aspects a 'google-services.json' in project root.
+We follow the receipt on firebase page, open the console and create a new project. In result we can download this json. If we create a folder android/platform/android and copy the json into, then it will be copied to native Android project at build time.
+
+##jars
+The firebase SDk needs a lot of jars. 
+````java
+firebase-auth-common-9-6-1.jar
+firebase-auth-module.jar
+firebase-auth_9.6.3.jar
+firebase-common-9.6.1.jar
+firebase-database-9.6.1.jar
+firebase-database-connection-9.6.1.jar
+firebase-storage_9.6.1.jar
+playservice-base-9.6.1.jar
+playservices-basement-9.6.1.jar
+playservices-tasks-9.6.1.jar
+```
+To get this, we create a new simole project inside Android Studio and add all the needed stuff from receipt into gradle file like this:
+```java
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.google.firebase:firebase-storage:9.6.1'
+    compile 'com.google.firebase:firebase-auth:9.6.1'
+    compile  'com.google.firebase:firebase-database:9.6.1'
+    compile 'com.google.firebase:firebase-database:9.6.1'
+    compile  'com.google.firebase:firebase-messaging:9.6.1'
+    testCompile 'junit:junit:4.12'
+}
+apply plugin: 'com.google.gms.google-service'
+```
+Now we can press the green arrow and a apk will create.  In 'app/build/intermediates/exploded-aar' we fold out all and will find folders with name 'jars'.
+We rename all jars to names with sense (follwing the folders) and will get the list in the head of this chapter. Finally we can copy all jars to android/lib of our module.
+In the end we open Project/Properties/Java Build Path/ and add all to path.
