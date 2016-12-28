@@ -1,5 +1,6 @@
-#Ti.WifiManager
-
-##Setup
-
-First we start The Appcelerator Studio and create a new module. After this we open CLI, goes to the android folder in it and modify build.properties.
+Ti.WifiManager
+=============
+Setup
+-----
+First we start The Appcelerator Studio and create a new module. 
+After this we open CLI, goes to the android folder in it and modify build.properties.
